@@ -1,0 +1,16 @@
+<section class="card result ok">
+  <div class="result-head">
+    <span class="badge ok" aria-hidden="true">{{ report.matched_pages }}</span>
+    <div>
+      <h2>Совпадений: {{ report.matched_pages }} из {{ report.ticket_pages }}</h2>
+      <p class="sub">{{ report.ticket_name }}</p>
+    </div>
+  </div>
+
+  <p class="label">Номера отправлений</p>
+  <ul class="chips">
+    {% for number in report.matched %}<li>{{ number }}</li>{% endfor %}
+  </ul>
+
+  <a class="btn primary" href="/download/{{ job_id }}" download>Скачать filtered_ticket.pdf</a>
+</section>

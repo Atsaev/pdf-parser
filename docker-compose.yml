@@ -1,0 +1,15 @@
+services:
+  ozon-tickets:
+    build: .
+    restart: unless-stopped
+    networks:
+      - app-network
+    command: uv run --no-sync uvicorn app.web.app:app --host 0.0.0.0 --port 8000 --root-path /ozon-tickets
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+
+networks:
+  app-network:
+    external: true
