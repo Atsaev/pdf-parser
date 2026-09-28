@@ -1,6 +1,7 @@
 services:
   ozon-tickets:
     build: .
+    image: ozon-tickets:latest
     restart: unless-stopped
     networks:
       - app-network
