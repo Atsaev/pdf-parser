@@ -9,7 +9,7 @@ import pdfplumber
 
 from app.domain.shipment import SHIPMENT_SEARCH_RE, ShipmentNumber
 
-TAIL_RE = re.compile(r"^-\d{4}-\d$")
+TAIL_RE = re.compile(r"^-\d{4}-\d{1,2}$")
 PREFIX_PART_RE = re.compile(r"^\d{4,6}$")
 COLUMN_TOLERANCE = 0.2
 

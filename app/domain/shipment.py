@@ -3,13 +3,13 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-SHIPMENT_SEARCH_RE = re.compile(r"\d{8,12}-\d{4}-\d")
-FULL_RE = re.compile(r"^\d{8,12}-\d{4}-\d$")
+SHIPMENT_SEARCH_RE = re.compile(r"\d{8,12}-\d{4}-\d{1,2}(?!\d)")
+FULL_RE = re.compile(r"^\d{8,12}-\d{4}-\d{1,2}$")
 
 
 @dataclass(frozen=True, slots=True)
 class ShipmentNumber:
-    """Номер отправления вида `<префикс>-<4 цифры>-<1 цифра>`."""
+    """Номер отправления вида `<префикс>-<4 цифры>-<1–2 цифры>`."""
 
     prefix: str
     middle: str
