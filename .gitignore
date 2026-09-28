@@ -12,5 +12,8 @@ wheels/
 # Generated output
 filtered_ticket.pdf
 
+# Local test documents
+*.pdf
+
 # macOS
 .DS_Store
