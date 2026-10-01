@@ -6,16 +6,17 @@ from collections.abc import Iterable
 from pathlib import Path
 from typing import Protocol
 
+from app.domain.assembly import AssemblyList
+from app.domain.label import TicketCode
 from app.domain.report import FilterReport
-from app.domain.shipment import ShipmentNumber
 
 
 class AssemblyReader(Protocol):
-    def read(self, path: Path) -> list[ShipmentNumber]: ...
+    def read(self, path: Path) -> AssemblyList: ...
 
 
 class TicketReader(Protocol):
-    def read(self, path: Path) -> list[ShipmentNumber | None]: ...
+    def read(self, path: Path) -> list[TicketCode | None]: ...
 
 
 class PageWriter(Protocol):

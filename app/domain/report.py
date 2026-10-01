@@ -3,18 +3,23 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from app.domain.shipment import ShipmentNumber
+from app.domain.label import TicketCode
 
 
 @dataclass(frozen=True, slots=True)
 class FilterReport:
     """Результат фильтрации одной этикетки по листу сборки."""
 
-    assembly_total: int
+    assembly_numbers: int
+    assembly_labels: int
     ticket_name: str
     ticket_pages: int
-    matched: tuple[ShipmentNumber, ...]
+    matched: tuple[TicketCode, ...]
     output: Path | None
+
+    @property
+    def has_assembly(self) -> bool:
+        return self.assembly_numbers + self.assembly_labels > 0
 
     @property
     def matched_pages(self) -> int:

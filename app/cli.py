@@ -31,7 +31,7 @@ def main(argv: list[str] | None = None) -> int:
 
     service = FilterService(PdfAssemblyReader(), PdfTicketReader(), PdfPageWriter())
     report = service.filter(args.assembly, args.ticket, args.output)
-    if report.assembly_total == 0:
+    if not report.has_assembly:
         log.error("В листе сборки не найдено ни одного номера отправления")
         return 1
     if not report.has_matches:

@@ -39,7 +39,7 @@ def _render(app: FastAPI, request: Request, name: str, **context: object) -> Res
 
 
 def _no_match_message(report: FilterReport) -> str:
-    if report.assembly_total == 0:
+    if not report.has_assembly:
         return "В листе сборки не найдено ни одного номера отправления."
     return "Совпадений нет — этот ticket не входит в лист сборки."
 
